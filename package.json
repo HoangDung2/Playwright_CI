@@ -14,5 +14,8 @@
   },
   "attribute": "// numeroConta",
   "operator": "=",
-  "value": "0030152201"
+  "value": "0030152201",
+  "dependencies": {
+    "playwright": "^1.35.1"
+  }
 }
