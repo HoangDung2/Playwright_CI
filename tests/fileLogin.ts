@@ -12,6 +12,7 @@ test.describe("Test case login", async () => {
       await admin.Login.loginId(element.username,element.password);
       let logo = await page.locator("xpath=//img[@src='/web/images/orangehrm-logo.png?v=1683010990518']");
       await expect(logo).toBeVisible();
+      await logo.screenshot({path: 'screenshot.png' });
     })
   });
   data.tc_unfill.forEach((element:User,index:number) => {
@@ -20,6 +21,7 @@ test.describe("Test case login", async () => {
       await admin.Login.loginId(element.username,element.password);
       let ms ="Required";
       expect("Required").toBe(ms);
+      await ms.screenshot({path: 'screenshot.png' });
     })
   });
   data.tc_false.forEach((element:User,index:number) => {
@@ -28,6 +30,7 @@ test.describe("Test case login", async () => {
       await admin.Login.loginId(element.username,element.password);
       let ms = await page.locator("xpath=//*[contains(p,'Invalid credentials')]//child::p").textContent();
       await expect(ms).toBe("Invalid credentials");
+      await ms.screenshot({path: 'screenshot.png' })
     })
   });
 })
