@@ -1,0 +1,27 @@
+name: "GitHub2"
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  e2e-tests:
+    name: Run end-to-end e2e-tests
+    runs-on: windows-latest 
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+
+      - name: Install playwright browsers
+        run: npx playwright install 
+
+      - name: Install dependencies and run tests
+        run: npm i && npx playwright test
+        
+      - uses: actions/upload-artifact@v2
+        with:
+            name: playwright-reprot
+            path: playwright-report/index.html
+            retention-days: 30
