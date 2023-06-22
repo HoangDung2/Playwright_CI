@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig } from '@playwright/test';
+import { PlaywrightTestConfig,devices } from '@playwright/test';
 // import { json } from 'node:stream/consumers';
 
 const config: PlaywrightTestConfig={
@@ -26,7 +26,7 @@ const config: PlaywrightTestConfig={
   }], ["html",{
         open:"never",
   }]],
-  import { PlaywrightTestConfig, devices } from '@playwright/test';
+  // import { PlaywrightTestConfig, devices } from '@playwright/test';
 // import { json } from 'node:stream/consumers';
 
 const config: PlaywrightTestConfig={
