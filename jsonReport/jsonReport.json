@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "D:\\2\\playwright_orangehrm\\playwright.config.ts",
-    "rootDir": "D:/2/playwright_orangehrm",
+    "configFile": "D:\\CI_Github\\Playwright_CI\\playwright.config.ts",
+    "rootDir": "D:/CI_Github/Playwright_CI",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -14,7 +14,7 @@
     "preserveOutput": "always",
     "reporter": [
       [
-        "list",
+        "dot",
         null
       ],
       [
@@ -37,12 +37,12 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "D:/2/playwright_orangehrm/test-results",
+        "outputDir": "D:/CI_Github/Playwright_CI/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "",
         "name": "",
-        "testDir": "D:/2/playwright_orangehrm",
+        "testDir": "D:/CI_Github/Playwright_CI",
         "testIgnore": [],
         "testMatch": [
           "tests/fileLogin.ts"
@@ -84,28 +84,17 @@
                   "results": [
                     {
                       "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 9142,
+                      "status": "skipped",
+                      "duration": 0,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2023-06-22T08:18:29.981Z",
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Happy-case-0\\video.webm"
-                        },
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Happy-case-0\\test-finished-1.png"
-                        }
-                      ]
+                      "startTime": "2023-06-22T08:40:42.915Z",
+                      "attachments": []
                     }
                   ],
-                  "status": "expected"
+                  "status": "skipped"
                 }
               ],
               "id": "0da069089579c5021b9b-14ef669a8220595045f3",
@@ -124,31 +113,8 @@
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 5714,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2023-06-22T08:18:41.424Z",
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Unfill-unsername-password-0\\video.webm"
-                        },
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Unfill-unsername-password-0\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "0da069089579c5021b9b-c45ea3b270d47d3863be",
@@ -167,31 +133,8 @@
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 7594,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2023-06-22T08:18:47.141Z",
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Fill-unsername-password-invalid-0\\video.webm"
-                        },
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Fill-unsername-password-invalid-0\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "0da069089579c5021b9b-37f1ce527e150ed8a547",
@@ -210,31 +153,8 @@
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 6764,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2023-06-22T08:18:54.738Z",
-                      "attachments": [
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Fill-unsername-password-invalid-1\\video.webm"
-                        },
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "D:\\2\\playwright_orangehrm\\test-results\\tests-fileLogin.ts-Test-case-login-Fill-unsername-password-invalid-1\\test-finished-1.png"
-                        }
-                      ]
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "0da069089579c5021b9b-ded150d334fb5c313895",
