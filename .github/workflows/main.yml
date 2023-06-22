@@ -18,7 +18,7 @@ jobs:
         run: npx playwright install 
 
       - name: Install dependencies and run tests
-        run: npm i && npx playwright test
+        run: npm i && npx playwright install && npx playwright test
         
       - uses: actions/upload-artifact@v2
         with:
