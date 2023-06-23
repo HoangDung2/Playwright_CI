@@ -41,15 +41,15 @@ const config: PlaywrightTestConfig={
       baseURL:"https://opensource-demo.orangehrmlive.com/",
       // baseURL:'http://localhost:3000',
       headless:false,
-      video:"on",
-      screenshot:"on",
+      // video:"on",
+      // screenshot:"on",
       steps:"on",
       launchOptions: {
       },
       trace: "on-first-retry"
   },
   retries:0,
-  reporter: [["dot"], ["json",{
+  reporter: [["list"], ["json",{
     outputFile: "jsonReport/jsonReport.json"
   }], ["html",{
         open:"never",

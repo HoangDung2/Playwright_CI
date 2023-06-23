@@ -1,13 +1,18 @@
 import {Page, expect, Locator } from '@playwright/test';
 // import { Locator } from 'playwright-core';
 export default class Login{
+    readonly submit:Locator;
     constructor(public page: Page){
+        this.page=page
+        this.submit= page.locator("xpath=//*[@class='oxd-form-actions orangehrm-login-action']//*[@type='submit']");
     }
     async loginId(username1:string, password1:string){
         await this.page.fill("input[name='username']",username1);
         await this.page.fill("input[name='password']",password1);
-        await this.submitLogin();
+        // await this.submitLogin();
     }
+   
+
     async submitLogin(){
       await this.page.locator("xpath=//*[@class='oxd-form-actions orangehrm-login-action']//*[@type='submit']").click();
     }
