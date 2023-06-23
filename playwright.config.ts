@@ -41,7 +41,7 @@ const config: PlaywrightTestConfig={
       baseURL:"https://opensource-demo.orangehrmlive.com/",
       // baseURL:'http://localhost:3000',
       headless:false,
-      // video:"on",
+      video:"on",
       // screenshot:"on",
       steps:"on",
       launchOptions: {
