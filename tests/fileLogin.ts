@@ -10,8 +10,8 @@ test.describe("Test case login", async () => {
       const admin = new Admin(page);
       await page.goto(`${baseURL}web/index.php/auth/login`);
       await admin.Login.loginId(element.username,element.password);
-      let username = await page.locator("xpath=//input[@name='username']");
-      await expect(username).toBeVisible();
+      let username = await page.locator("input[name='username']");
+      await expect(username).toHaveValue(element.username);
       const screenshot = await page.screenshot();
       await testInfo.attach('Verify should be fill username & password', { body: screenshot, contentType: 'image/png/jpeg' });
       await admin.Login.submitLogin();
