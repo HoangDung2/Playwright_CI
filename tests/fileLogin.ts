@@ -9,7 +9,7 @@ test.describe("Test case login", async () => {
   data.tc_happy.forEach((element:User,index:number) => {
     test("Happy case: "+index.toString(), async ({page,baseURL},testInfo) => {
       const admin = new Admin(page);
-      const video = await saveVideo(page,"video"+index.toString()+" .mp4");
+      const video = await saveVideo(page,"video Happy_Case"+index.toString()+" .mp4");
       await admin.Login.loginId(element.username,element.password);
       let username = await page.locator("input[name='username']");
       await expect(username).toHaveValue(element.username);
@@ -27,6 +27,7 @@ test.describe("Test case login", async () => {
   data.tc_unfill.forEach((element:User,index:number) => {
     test("Unfill unsername & password: "+index.toString(), async ({ page,baseURL},testInfo) => {
       const admin = new Admin(page);
+      const video = await saveVideo(page,"video Unfill_Case"+index.toString()+" .mp4");
       await admin.Login.loginId(element.username,element.password);
       await admin.Login.submitLogin();
       let message =page.locator("span.oxd-input-group__message").first();
@@ -34,11 +35,13 @@ test.describe("Test case login", async () => {
       const VerifyRequired = await page.screenshot();
       await testInfo.attach('Verify Required Username & Password', { body: VerifyRequired, contentType: 'image/png'})
       await page.waitForTimeout(500);
+      await video.stop();
     })
   });
   data.tc_false.forEach((element:User,index:number) => {
     test("Fill unsername & password invalid: "+index.toString(), async ({ page,baseURL},testInfo) => {
       const admin = new Admin(page);
+      const video = await saveVideo(page,"video False_Case"+index.toString()+" .mp4");
       await admin.Login.loginId(element.username,element.password);
       let username = await page.locator("input[name='username']");
       await expect(username).toHaveValue(element.username);
@@ -50,6 +53,7 @@ test.describe("Test case login", async () => {
       const VerifyInvalid = await page.screenshot();
       await testInfo.attach('Verify Invalid credentials', { body: VerifyInvalid, contentType: 'image/png' })
       await page.waitForTimeout(500);
+      await video.stop();
     })
   });
 })
