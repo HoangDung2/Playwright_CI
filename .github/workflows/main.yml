@@ -13,9 +13,11 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
+      - name: Install playwright-video
+        run: npm install playwright-video
 
       - name: Install dependencies, browser and run tests
-        run: npm i && npx playwright install && npm install playwright-video && npx playwright test
+        run: npm i && npx playwright install && npx playwright test
         
       - uses: actions/upload-artifact@v2
         with:
