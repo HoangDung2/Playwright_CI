@@ -5,42 +5,48 @@ test.describe("Test case login", async () => {
   test.beforeEach(async ({ page,baseURL}) => {
    await page.goto(`${baseURL}web/index.php/auth/login`);
 });
-  data.tc.forEach((element:User,index:number) => {
+  data.tc_happy.forEach((element:User,index:number) => {
     test("Happy case: "+index.toString(), async ({page,baseURL},testInfo) => {
       const admin = new Admin(page);
-      await page.goto(`${baseURL}web/index.php/auth/login`);
       await admin.Login.loginId(element.username,element.password);
       let username = await page.locator("input[name='username']");
       await expect(username).toHaveValue(element.username);
-      const screenshot = await page.screenshot();
-      await testInfo.attach('Verify should be fill username & password', { body: screenshot, contentType: 'image/png/jpeg' });
+      const VerifyFillUser = await page.screenshot();
+      await testInfo.attach('Verify should be fill username & password', { body: VerifyFillUser, contentType: 'image/png' });
       await admin.Login.submitLogin();
-      let logo = await page.locator("xpath=//img[@src='/web/images/orangehrm-logo.png?v=1683010990518']");
+      let logo = await page.locator('div.oxd-brand-banner');
       await expect(logo).toBeVisible();
-      const screenshot1 = await page.screenshot();
-      await testInfo.attach('Verify Succes', { body: screenshot1, contentType: 'image/png/jpeg' });
+      const VerifySucces = await page.screenshot();
+      await testInfo.attach('Verify Succes', { body: VerifySucces, contentType: 'image/png' });
+      await page.waitForTimeout(500);
     })
   });
   data.tc_unfill.forEach((element:User,index:number) => {
     test("Unfill unsername & password: "+index.toString(), async ({ page,baseURL},testInfo) => {
       const admin = new Admin(page);
-      const VerifyUserPass = await page.screenshot();
       await admin.Login.loginId(element.username,element.password);
       await admin.Login.submitLogin();
-      let ms = await page.locator("span.oxd-input-group__message").first();
-      await expect(ms).toBeVisible();
-      await testInfo.attach('Verify Required Username & Password', { body: VerifyUserPass, contentType: 'image/png/jpeg' });
+      let message =page.locator("span.oxd-input-group__message").first();
+      await expect(message).toBeVisible();
+      const VerifyRequired = await page.screenshot();
+      await testInfo.attach('Verify Required Username & Password', { body: VerifyRequired, contentType: 'image/png'})
+      await page.waitForTimeout(500);
     })
   });
   data.tc_false.forEach((element:User,index:number) => {
     test("Fill unsername & password invalid: "+index.toString(), async ({ page,baseURL},testInfo) => {
       const admin = new Admin(page);
-      const VerifyInvalid = await page.screenshot();
       await admin.Login.loginId(element.username,element.password);
+      let username = await page.locator("input[name='username']");
+      await expect(username).toHaveValue(element.username);
+      const VerifyFillUser = await page.screenshot();
+      await testInfo.attach('Verify should be fill username & password', { body: VerifyFillUser, contentType: 'image/png' });
       await admin.Login.submitLogin();
-      let ms = await page.locator("p.oxd-alert-content-text");
-      await expect(ms).toBeVisible();
-      await testInfo.attach('Verify Invalid credentials', { body: VerifyInvalid, contentType: 'image/png/jpeg' });
+      let message = await page.locator("p.oxd-alert-content-text");
+      await expect(message).toBeVisible();
+      const VerifyInvalid = await page.screenshot();
+      await testInfo.attach('Verify Invalid credentials', { body: VerifyInvalid, contentType: 'image/png' })
+      await page.waitForTimeout(500);
     })
   });
 })
