@@ -21,26 +21,26 @@ test.describe("Test case login", async () => {
       await testInfo.attach('Verify Succes', { body: screenshot1, contentType: 'image/png/jpeg' });
     })
   });
-  // data.tc_unfill.forEach((element:User,index:number) => {
-  //   test("Unfill unsername & password: "+index.toString(), async ({ page,baseURL},testInfo) => {
-  //     const admin = new Admin(page);
-  //     const screenshot = await page.screenshot();
-  //     await admin.Login.loginId(element.username,element.password);
-  //     await admin.Login.submitLogin();
-  //     let ms = await page.locator("span.oxd-input-group__message").first();
-  //     await expect(ms).toBeVisible();
-  //     await testInfo.attach('Verify Required Username & Password', { body: screenshot, contentType: 'image/png/jpeg' });
-  //   })
-  // });
-  // data.tc_false.forEach((element:User,index:number) => {
-  //   test("Fill unsername & password invalid: "+index.toString(), async ({ page,baseURL},testInfo) => {
-  //     const admin = new Admin(page);
-  //     const screenshot = await page.screenshot();
-  //     await admin.Login.loginId(element.username,element.password);
-  //     await admin.Login.submitLogin();
-  //     let ms = await page.locator("p.oxd-alert-content-text");
-  //     await expect(ms).toBeVisible();
-  //     await testInfo.attach('Verify Invalid credentials', { body: screenshot, contentType: 'image/png/jpeg' });
-  //   })
-  // });
+  data.tc_unfill.forEach((element:User,index:number) => {
+    test("Unfill unsername & password: "+index.toString(), async ({ page,baseURL},testInfo) => {
+      const admin = new Admin(page);
+      const VerifyUserPass = await page.screenshot();
+      await admin.Login.loginId(element.username,element.password);
+      await admin.Login.submitLogin();
+      let ms = await page.locator("span.oxd-input-group__message").first();
+      await expect(ms).toBeVisible();
+      await testInfo.attach('Verify Required Username & Password', { body: VerifyUserPass, contentType: 'image/png/jpeg' });
+    })
+  });
+  data.tc_false.forEach((element:User,index:number) => {
+    test("Fill unsername & password invalid: "+index.toString(), async ({ page,baseURL},testInfo) => {
+      const admin = new Admin(page);
+      const VerifyInvalid = await page.screenshot();
+      await admin.Login.loginId(element.username,element.password);
+      await admin.Login.submitLogin();
+      let ms = await page.locator("p.oxd-alert-content-text");
+      await expect(ms).toBeVisible();
+      await testInfo.attach('Verify Invalid credentials', { body: VerifyInvalid, contentType: 'image/png/jpeg' });
+    })
+  });
 })
