@@ -1,4 +1,5 @@
 import { chromium, expect, Page, test, Locator } from '@playwright/test';
+import {saveVideo} from 'playwright-video';
 import {Admin} from "../Admin";
 import {User,data,} from '../fileData';
 test.describe("Test case login", async () => {
@@ -8,6 +9,7 @@ test.describe("Test case login", async () => {
   data.tc_happy.forEach((element:User,index:number) => {
     test("Happy case: "+index.toString(), async ({page,baseURL},testInfo) => {
       const admin = new Admin(page);
+      const video = await saveVideo(page,"video"+index.toString()+" .mp4");
       await admin.Login.loginId(element.username,element.password);
       let username = await page.locator("input[name='username']");
       await expect(username).toHaveValue(element.username);
@@ -19,6 +21,7 @@ test.describe("Test case login", async () => {
       const VerifySucces = await page.screenshot();
       await testInfo.attach('Verify Succes', { body: VerifySucces, contentType: 'image/png' });
       await page.waitForTimeout(500);
+      await video.stop();
     })
   });
   data.tc_unfill.forEach((element:User,index:number) => {
