@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Install dependencies, browser and run tests
-        run: npm i && npx playwright install && npx playwright test
+        run: npm i && npx playwright install && npm install playwright-video && npx playwright test
         
       - uses: actions/upload-artifact@v2
         with:
